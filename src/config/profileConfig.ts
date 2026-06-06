@@ -25,12 +25,6 @@ export const profileConfig: ProfileConfig = {
 			showName: false,
 		},
 		{
-			name: "抖音",
-			icon: "fa7-brands:tiktok",
-			url: "https://www.douyin.com/user/774552089",
-			showName: false,
-		},
-		{
 			name: "RSS",
 			icon: "fa7-solid:rss",
 			url: "/rss/",
