@@ -70,17 +70,17 @@ export const backgroundWallpaper: BackgroundWallpaperConfig = {
 			// 是否允许用户通过控制面板切换横幅标题显示
 			switchable: true,
 			// 主页横幅主标题
-			title: "Lovely firefly!",
+			title: "拾光の博客",
 			// 主页横幅主标题字体大小
 			titleSize: "3.8rem",
 			// 主页横幅副标题
 			subtitle: [
-				"In Reddened Chrysalis, I Once Rest",
-				"From Shattered Sky, I Free Fall",
-				"Amidst Silenced Stars, I Deep Sleep",
-				"Upon Lighted Fyrefly, I Soon Gaze",
-				"From Undreamt Night, I Thence Shine",
-				"In Finalized Morrow, I Full Bloom",
+				"山高水长，后会有期",
+				"知足常乐，随遇而安",
+				"来日方长，何惧车遥",
+				"清风明月，不劳相觅",
+				"人生如逆旅，我亦是行人",
+				"往事不回头，未来不将就",
 			],
 			// 主页横幅副标题字体大小
 			subtitleSize: "1.5rem",
