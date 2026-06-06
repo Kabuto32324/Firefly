@@ -7,10 +7,10 @@ const SITE_LANG = "zh_CN";
 
 export const siteConfig: SiteConfig = {
 	// 站点标题
-	title: "拾光",
+	title: "Mistfly",
 
 	// 站点副标题
-	subtitle: "拾取散落的时光碎片",
+	subtitle: "拾光的博客🐧",
 
 	// 站点 URL
 	site_url: "https://mistfly.xyz/",
@@ -53,14 +53,12 @@ export const siteConfig: SiteConfig = {
 
 	// Favicon 配置
 	favicon: [
-		{
-			// 图标文件路径
-			src: "/favicon/favicon.ico",
-			// 可选，指定主题 'light' | 'dark'
-			// theme: "light",
-			// 可选，图标大小
-			// sizes: "32x32",
-		},
+		{ src: "/favicon/favicon.ico" },
+		{ src: "/favicon/favicon-32.png", sizes: "32x32" },
+		{ src: "/favicon/favicon-16.png", sizes: "16x16" },
+		{ src: "/favicon/apple-touch-icon.png", sizes: "180x180" },
+		{ src: "/favicon/android-chrome-192.png", sizes: "192x192" },
+		{ src: "/favicon/android-chrome-512.png", sizes: "512x512" },
 	],
 
 	// 导航栏配置
@@ -77,7 +75,7 @@ export const siteConfig: SiteConfig = {
 			alt: "拾光",
 		},
 		// 导航栏标题
-		title: "拾光",
+		title: "Mistfly",
 		// 全宽导航栏，导航栏是否占满屏幕宽度
 		widthFull: false,
 		// 导航菜单对齐方式，left：左对齐，center：居中
