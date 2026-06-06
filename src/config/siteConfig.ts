@@ -17,7 +17,7 @@ export const siteConfig: SiteConfig = {
 
 	// 站点描述
 	description:
-		"拾取散落的时光碎片，记录代码与生活的闪光瞬间。",
+		"拾取散落的时光碎片",
 
 	// 站点关键词
 	keywords: [
