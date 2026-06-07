@@ -11,7 +11,7 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	showInNavbar: true,
 
 	// 使用方式："meting" 使用 Meting API，"local" 使用本地音乐列表
-	mode: "meting",
+	mode: "local",
 
 	// 默认音量 (0-1)
 	volume: 0.7,
@@ -50,11 +50,39 @@ export const musicPlayerConfig: MusicPlayerConfig = {
 	local: {
 		playlist: [
 			{
-				name: "使一颗心免于哀伤",
-				artist: "知更鸟 / HOYO-MiX / Chevy",
-				url: "/assets/music/使一颗心免于哀伤-哼唱.mp3",
-				cover: "/assets/music/cover/109951169585655912.webp",
-				lrc: "",
+				name: "愿与愁",
+				artist: "林俊杰",
+				url: "/assets/music/林俊杰 - 愿与愁.mp3",
+				cover: "",
+				lrc: "/assets/music/愿与愁-林俊杰-歌词.lrc",
+			},
+			{
+				name: "蒲公英的约定",
+				artist: "周杰伦",
+				url: "/assets/music/周杰伦+-+蒲公英的约定.mp3",
+				cover: "",
+				lrc: "/assets/music/蒲公英的约定-周杰伦-歌词.lrc",
+			},
+			{
+				name: "This Is What Winter Feels Like",
+				artist: "JVKE",
+				url: "/assets/music/this-is-what-winter-feels-like-JVKE.mp3",
+				cover: "",
+				lrc: "/assets/music/this is what winter feels like-JVKE-歌词.lrc",
+			},
+			{
+				name: "Time Machine",
+				artist: "mj apanay, aren park",
+				url: "/assets/music/mj apanay,aren park - time machine (feat. aren park).mp3",
+				cover: "",
+				lrc: "/assets/music/time machine (feat. aren park) (Original Mix)-mj apanay&aren park-歌词.lrc",
+			},
+			{
+				name: "Maybe",
+				artist: "mixed matches & Lukrative",
+				url: "/assets/music/Maybe-mixed+matches&Lukrative.mp3",
+				cover: "",
+				lrc: "/assets/music/Maybe-mixed matches&Lukrative-歌词.lrc",
 			},
 		],
 	},
