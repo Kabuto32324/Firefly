@@ -209,7 +209,7 @@ export const siteConfig: SiteConfig = {
 		// 51la 统计配置
 		la51Analytics: {
 			// 51la 统计 ID
-			Id: "3144826",
+			Id: "3QBGaDiWop8aJosj",
 			// 自定义 SDK JS 地址，防止 DNS 污染，留空使用默认地址
 			sdkUrl: "",
 			// 多个统计 ID 的数据分离标识，留空则使用 Id
