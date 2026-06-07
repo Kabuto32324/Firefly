@@ -1,0 +1,8 @@
+评论系统Twikoo数据库：（MongoDB）
+
+用户名：Aurora
+
+密码：gkRbEdCLE0CaRGEx
+
+
+连接字符串：mongodb+srv://Aurora:gkRbEdCLE0CaRGEx@twikoo.qzrda8m.mongodb.net/?appName=Twikoo
