@@ -162,30 +162,6 @@
     overflow: hidden;
   }
 
-  details {
-    @apply my-4 rounded-xl border border-(--line-color) overflow-hidden;
-
-    summary {
-      @apply cursor-pointer px-4 py-3 bg-(--btn-regular-bg) font-semibold text-(--btn-content) select-none transition;
-
-      &:hover {
-        @apply bg-(--btn-regular-bg-hover);
-      }
-
-      h2, h3, h4 {
-        @apply my-0 inline;
-      }
-    }
-
-    &[open] > summary {
-      @apply border-b border-(--line-color);
-    }
-
-    > *:not(summary) {
-      @apply px-4 py-3;
-    }
-  }
-
   .horizontal-scroll-container {
     @apply my-4;
     border-radius: calc(var(--radius-large) - 0.5rem);
