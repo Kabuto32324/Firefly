@@ -43,6 +43,13 @@ const getDynamicNavBarConfig = (): NavBarConfig => {
 		children: [
 			// 相册
 			...(siteConfig.pages.gallery ? [LinkPreset.Gallery] : []),
+			// 图床
+			{
+				name: "图床",
+				url: "https://img.mistfly.xyz/",
+				icon: "material-symbols:image",
+				external: true,
+			},
 		],
 	});
 
