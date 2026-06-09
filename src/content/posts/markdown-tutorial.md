@@ -306,7 +306,8 @@ Markdown 支持直接嵌入 HTML：
 
 </details>
 
-## Firefly 扩展语法
+<details>
+<summary><h2>Firefly 扩展语法（点击展开）</h2></summary>
 
 以下是 Firefly 主题特有的 Markdown 扩展功能，让你的博客内容更丰富。
 
@@ -470,6 +471,8 @@ gantt
     section 测试
     集成测试     :a5, 2026-01-27, 7d
 ```
+
+</details>
 
 ## 写在最后
 
