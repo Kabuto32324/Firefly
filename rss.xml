@@ -1,4 +1,265 @@
-<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Mistfly</title><description>拾光の博客✨</description><link>https://mistfly.xyz/</link><templateTheme>Firefly</templateTheme><templateThemeVersion>6.10.9</templateThemeVersion><templateThemeUrl>https://github.com/CuteLeaf/Firefly</templateThemeUrl><lastBuildDate>2026年6月12日 20:03:46</lastBuildDate><item><title>Claude Code 最新安装教程</title><link>https://mistfly.xyz/posts/claude-code-setup/</link><guid isPermaLink="true">https://mistfly.xyz/posts/claude-code-setup/</guid><description>面向普通用户的 Claude Code 安装与模型接入指南</description><pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h2&gt;什么是 AI Agent&lt;a href=&quot;#什么是-ai-agent&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;聊 Claude Code 之前，先搞清楚一个概念：&lt;strong&gt;AI Agent&lt;/strong&gt;，也叫「智能体」。&lt;/p&gt;&lt;p&gt;普通 AI 对话就是你问一句它答一句，像个问答机器。AI Agent 不一样——它能自己动手干活。&lt;/p&gt;&lt;p&gt;举个例子：你说「帮我把这个项目跑起来」，它会自己去看代码、装依赖、启动服务。不需要你一步步教它。&lt;/p&gt;&lt;/section&gt;
+<?xml version="1.0" encoding="UTF-8"?><rss version="2.0" xmlns:content="http://purl.org/rss/1.0/modules/content/"><channel><title>Mistfly</title><description>拾光の博客✨</description><link>https://mistfly.xyz/</link><templateTheme>Firefly</templateTheme><templateThemeVersion>6.10.9</templateThemeVersion><templateThemeUrl>https://github.com/CuteLeaf/Firefly</templateThemeUrl><lastBuildDate>2026年6月14日 17:00:15</lastBuildDate><item><title>Claude Code 使用指南</title><link>https://mistfly.xyz/posts/claude-code-usage/</link><guid isPermaLink="true">https://mistfly.xyz/posts/claude-code-usage/</guid><description>从零搞懂 CC 的核心功能，工作模式、指令、上下文管理、配置、扩展，一篇讲透。</description><pubDate>Sun, 14 Jun 2026 00:00:00 GMT</pubDate><content:encoded>&lt;p&gt;装好 CC 只是开始，怎么把它用顺手是另一回事。这篇跳过安装（去看 &lt;a href=&quot;https://blog.mistfly.xyz/posts/claude-code-setup/&quot; target=&quot;_blank&quot;&gt;上一篇&lt;/a&gt;），直接讲 CC 的功能和用法。&lt;/p&gt;
+&lt;section&gt;&lt;h1&gt;工作模式&lt;a href=&quot;#工作模式&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;CC 不是一启动就闷头干活的工具，它有三种工作模式，各有分工。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;模式&lt;/th&gt;&lt;th&gt;干什么的&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;默认模式&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;刚启动就是这个状态。你可以跟 CC 聊天、问问题、查资料，就是一个增强版的对话框。&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;计划模式&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;遇到复杂任务，CC 会自动切到这里。它会分析需求、拆解步骤，但不会动你的代码，纯做规划。&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;Accept Edits 模式&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;方案确认后切到这里，CC 才会真正开始改代码、写文件。&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;三种模式之间用 &lt;code&gt;Shift + Tab&lt;/code&gt; 切换。&lt;/p&gt;&lt;section&gt;&lt;h3&gt;怎么选&lt;a href=&quot;#怎么选&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;问问题、查资料、闲聊&lt;/strong&gt; → 默认模式就够了&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;改代码、写功能&lt;/strong&gt; → 先进计划模式让 CC 规划，你确认方案后再切到 Accept Edits&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;小改动、快速修 bug&lt;/strong&gt; → 直接切 Accept Edits，省掉规划环节&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h3&gt;免确认模式（慎用）&lt;a href=&quot;#免确认模式慎用&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;退出 CC 后用这个命令重启，它会跳过所有权限确认，直接执行操作：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;claude&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;--dangerously-skip-permissions&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;适合你自己一个人开发、对操作有完全把握的时候。&lt;strong&gt;生产环境或者不确定的操作，千万别开。&lt;/strong&gt;&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h3&gt;终端命令确认&lt;a href=&quot;#终端命令确认&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;在 Accept Edits 模式下执行终端命令时，CC 会弹出三个选项让你确认：&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://img.mistfly.xyz/file/blog/7oPv6TcM.png&quot; alt=&quot;终端命令确认&quot; /&gt;&lt;figcaption&gt;终端命令确认&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;仅同意这一次&lt;/strong&gt; — 只放行这一条，下次还得确认&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;同意并记住&lt;/strong&gt; — 这次放行，以后同类命令也不再问，省心&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;不同意&lt;/strong&gt; — 拒绝执行，CC 会换方案&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;一般来说，安装依赖这种明确无害的命令选”同意并记住”，其他不确定的就选”仅同意这一次”。&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;指令大全&lt;a href=&quot;#指令大全&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;指令是 CC 的主要操作方式。对话框里输入 &lt;code&gt;/&lt;/code&gt; 就能看到完整列表，这里挑重点讲。&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;指令&lt;/th&gt;&lt;th&gt;用途&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/compact&lt;/code&gt;&lt;/td&gt;&lt;td&gt;手动压缩上下文，释放空间&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/clear&lt;/code&gt;&lt;/td&gt;&lt;td&gt;清空上下文，等于开新会话&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/context&lt;/code&gt;&lt;/td&gt;&lt;td&gt;查看当前上下文占用情况&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/resume&lt;/code&gt;&lt;/td&gt;&lt;td&gt;恢复之前的对话&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/init&lt;/code&gt;&lt;/td&gt;&lt;td&gt;生成项目级 &lt;code&gt;Claude.md&lt;/code&gt; 配置文件&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/memory&lt;/code&gt;&lt;/td&gt;&lt;td&gt;管理全局/项目记忆和 Auto Memory&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/btw + 任务&lt;/code&gt;&lt;/td&gt;&lt;td&gt;临时隔离上下文干点别的，完事 &lt;code&gt;Esc&lt;/code&gt; 回来&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/simplify&lt;/code&gt;&lt;/td&gt;&lt;td&gt;代码审查，从质量、性能、复用性三个维度自动优化&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/rewind&lt;/code&gt;&lt;/td&gt;&lt;td&gt;回滚操作（连按两下 &lt;code&gt;Esc&lt;/code&gt; 也能回滚）&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/model&lt;/code&gt;&lt;/td&gt;&lt;td&gt;切换模型（用了 CC Switch 的话这条用不上）&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/skills&lt;/code&gt;&lt;/td&gt;&lt;td&gt;管理已下载的技能&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/mcp&lt;/code&gt;&lt;/td&gt;&lt;td&gt;管理 MCP 服务器&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/hooks&lt;/code&gt;&lt;/td&gt;&lt;td&gt;查看和配置事件钩子&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/agents&lt;/code&gt;&lt;/td&gt;&lt;td&gt;创建和管理子 Agent&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/plugin&lt;/code&gt;&lt;/td&gt;&lt;td&gt;安装和管理插件&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;code&gt;/help&lt;/code&gt;&lt;/td&gt;&lt;td&gt;查看所有指令的完整说明&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;section&gt;&lt;h3&gt;重点指令详解&lt;a href=&quot;#重点指令详解&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;/compact&lt;/code&gt; — 上下文压缩&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;上下文快满的时候用。可以不带参数直接压缩，也可以带上提示词告诉 CC 哪些内容要保留：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/compact&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/compact&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;保留关于登录模块的所有设计决策和代码修改&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;/btw&lt;/code&gt; — 临时对话&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;这个特别好用。比如你正在改项目 A，突然想问个无关的问题，用 &lt;code&gt;/btw&lt;/code&gt; 隔离上下文，完事按 &lt;code&gt;Esc&lt;/code&gt; 回来继续，不会污染主会话。&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/btw&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;帮我解释一下&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;JavaScript&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;的事件循环机制&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;/simplify&lt;/code&gt; — 代码审查&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;让 CC 从质量、性能、复用性三个维度审查你的代码，审查完自动优化修改。适合写完一段代码后让 CC 帮你”体检”一下。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;&lt;code&gt;/rewind&lt;/code&gt; — 回滚&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;改错代码了？连按两下 &lt;code&gt;Esc&lt;/code&gt; 或者输入 &lt;code&gt;/rewind&lt;/code&gt; 就能回到之前的状态，比手动 &lt;code&gt;git&lt;/code&gt; 恢复方便。&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;上下文管理&lt;a href=&quot;#上下文管理&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;上下文是 CC 的”短期记忆”，容量有限，需要你主动管理。&lt;/p&gt;&lt;p&gt;CC 每次对话都会把之前的聊天记录塞进上下文窗口。用着用着空间越来越满，CC 会变慢，甚至”断片”——你明明说过的需求它不记得了。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;查看上下文&lt;a href=&quot;#查看上下文&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;随时输入 &lt;code&gt;/context&lt;/code&gt; 看看当前状态：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/context&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://img.mistfly.xyz/file/blog/2ETE3yED.png&quot; alt=&quot;查看上下文&quot; /&gt;&lt;figcaption&gt;查看上下文&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;主要看这几个数字：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;信息&lt;/th&gt;&lt;th&gt;含义&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;总 token 数&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;当前使用量 / 上限（比如 77.8k / 200k）&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;占用百分比&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;一眼看出还能聊多久&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;&lt;strong&gt;消息占比&lt;/strong&gt;&lt;/td&gt;&lt;td&gt;越大说明聊天记录越长，离压缩越近&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;什么时候该压缩&lt;a href=&quot;#什么时候该压缩&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;别等 CC 提醒你，这几个信号出现就该动手：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;占用超过 60%&lt;/strong&gt; — 最直观的指标&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CC 响应变慢&lt;/strong&gt; — 以前秒回现在等半天&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;CC 开始”断片”&lt;/strong&gt; — 说过的需求它不记得了&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;完成阶段性任务&lt;/strong&gt; — 刚做完一个功能模块，趁这个节点压缩&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;切换工作方向&lt;/strong&gt; — 从修 bug 改成写新功能，压缩一下让 CC 重新聚焦&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;压缩上下文&lt;a href=&quot;#压缩上下文&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;用 &lt;code&gt;/compact&lt;/code&gt; 手动压缩：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/compact&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;压缩的时候带上提示词，告诉 CC 哪些信息要保留：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/compact&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;重点保留数据库表结构相关的讨论，其他可以精简&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;建议的压缩时机：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;60% 左右&lt;/strong&gt; — 轻度压缩，影响最小&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;75% 左右&lt;/strong&gt; — 必须压缩，否则可能丢信息&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;90% 以上&lt;/strong&gt; — 赶紧压缩，否则 CC 可能无法正常工作&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;清空上下文&lt;a href=&quot;#清空上下文&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;如果会话实在太乱，不如推倒重来：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/clear&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;什么时候用 &lt;code&gt;/clear&lt;/code&gt;：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;会话太长，压缩也救不回来&lt;/li&gt;
+&lt;li&gt;之前的上下文跟当前任务完全无关&lt;/li&gt;
+&lt;li&gt;CC 行为变得很奇怪，需要重置状态&lt;/li&gt;
+&lt;li&gt;换了一个完全不同的开发任务&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;清空前注意：之前的对话记录就没了，重要的设计决策记得提前写进 &lt;code&gt;Claude.md&lt;/code&gt; 或记忆。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;对话恢复&lt;a href=&quot;#对话恢复&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;不小心关了窗口或者切了项目，想找回之前的对话？用 &lt;code&gt;/resume&lt;/code&gt;：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/resume&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://img.mistfly.xyz/file/blog/FpAIcKTW.png&quot; alt=&quot;对话恢复&quot; /&gt;&lt;figcaption&gt;对话恢复&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;它会列出你之前的会话记录，选一个就能接着聊，上下文完整保留。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;状态栏常驻显示&lt;a href=&quot;#状态栏常驻显示&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;每次手动输 &lt;code&gt;/context&lt;/code&gt; 太麻烦？可以让上下文占用情况常驻在状态栏。输入以下提示词，按 CC 引导完成后重启终端：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;帮我配一个&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;statusLine,&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;显示当前目录&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;+&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;模型&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;+&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;上下文剩余百分比（进度条显示）&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://img.mistfly.xyz/file/blog/V5GykO71.png&quot; alt=&quot;状态栏常驻显示&quot; /&gt;&lt;figcaption&gt;状态栏常驻显示&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;&lt;p&gt;配好后终端底部会一直显示当前目录、模型名称和上下文进度条，一眼就能看到。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;多会话管理技巧&lt;a href=&quot;#多会话管理技巧&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;按任务拆分会话&lt;/strong&gt; — 一个会话专注做一件事，做完就开新的&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;善用 &lt;code&gt;/btw&lt;/code&gt;&lt;/strong&gt; — 临时有别的事，用 &lt;code&gt;/btw&lt;/code&gt; 隔离，完事 &lt;code&gt;Esc&lt;/code&gt; 回来&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;重要决策及时记录&lt;/strong&gt; — 写进 &lt;code&gt;Claude.md&lt;/code&gt; 或记忆，清空上下文也不会丢&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;阶段性压缩&lt;/strong&gt; — 完成一个功能模块就压缩一次，保持上下文”年轻”&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;Claude.md 配置&lt;a href=&quot;#claudemd-配置&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;&lt;code&gt;Claude.md&lt;/code&gt; 是 CC 的”项目说明书”。CC 启动时会自动读取，里面的内容直接影响它的行为。&lt;/p&gt;&lt;p&gt;你写”永远用中文回复”，CC 就一直说中文；你写”写代码时加注释”，它就乖乖加注释。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;项目级 Claude.md&lt;a href=&quot;#项目级-claudemd&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;在项目根目录下生成一份，CC 自动读取：&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;/init&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;项目级配置只对当前项目生效，适合放项目相关的技术栈说明、代码规范、API 端点这些。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;全局级 Claude.md&lt;a href=&quot;#全局级-claudemd&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;全局配置影响所有项目，适合放通用偏好。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;方式一：直接跟 CC 说&lt;/strong&gt;&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;回答时永远说中文，写进全局claude.md&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;方式二：通过指令编辑&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;输入 &lt;code&gt;/memory&lt;/code&gt;，选择「User Memory」进入编辑界面：&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://img.mistfly.xyz/file/blog/RhgQ42wD.png&quot; alt=&quot;memory编辑&quot; /&gt;&lt;figcaption&gt;memory编辑&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;&lt;section&gt;&lt;h3&gt;常用偏好示例&lt;a href=&quot;#常用偏好示例&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;不知道该写什么？这几个可以直接抄：&lt;/p&gt;&lt;p&gt;&lt;strong&gt;语言偏好&lt;/strong&gt;&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;回答时永远说中文，写进全局claude.md&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;回复风格&lt;/strong&gt;&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;回复要简洁，不要废话，直接给结论和代码，写进全局claude.md&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;p&gt;&lt;strong&gt;Git 提交&lt;/strong&gt;&lt;/p&gt;&lt;div&gt;&lt;figure&gt;&lt;figcaption&gt;&lt;span&gt;&lt;/span&gt;&lt;span&gt;Terminal window&lt;/span&gt;&lt;/figcaption&gt;&lt;pre&gt;&lt;code&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;1&lt;/div&gt;&lt;/div&gt;&lt;div&gt;&lt;span&gt;提交代码时使用中文&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;commit&lt;/span&gt;&lt;span&gt; &lt;/span&gt;&lt;span&gt;message，格式为&quot;类型: 简短描述&quot;，写进全局claude.md&lt;/span&gt;&lt;/div&gt;&lt;/div&gt;&lt;/code&gt;&lt;/pre&gt;&lt;div&gt;&lt;div&gt;&lt;/div&gt;&lt;div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/figure&gt;&lt;/div&gt;&lt;/section&gt;&lt;section&gt;&lt;h3&gt;加载机制&lt;a href=&quot;#加载机制&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;CC 启动时会按顺序加载配置：&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;&lt;strong&gt;全局级&lt;/strong&gt; — 所有项目通用的偏好&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目级&lt;/strong&gt; — 当前项目的特定配置&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;目录级&lt;/strong&gt; — 当前目录下的配置（如果有的话）&lt;/li&gt;
+&lt;/ol&gt;&lt;p&gt;后面的会覆盖前面的，所以你可以在全局层设”用中文”，但在某个英文项目里设”用英文”。&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;Auto Memory&lt;a href=&quot;#auto-memory&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;Auto Memory 是 CC 的自动记忆功能。开启后，它会在你工作过程中自动记下你的习惯、踩过的坑和积累的经验。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;记什么&lt;a href=&quot;#记什么&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;你纠正过 CC 的错误做法&lt;/li&gt;
+&lt;li&gt;你喜欢的代码风格和回复方式&lt;/li&gt;
+&lt;li&gt;项目中的特殊约定和坑&lt;/li&gt;
+&lt;li&gt;你反复强调的需求&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;什么时候生效&lt;a href=&quot;#什么时候生效&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;你告诉 CC “不要这样做”，它会记住下次不犯&lt;/li&gt;
+&lt;li&gt;你确认了某个方案可行，它会记住这个偏好&lt;/li&gt;
+&lt;li&gt;你踩过一个坑，它会记录下来避免重复&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;怎么开启&lt;a href=&quot;#怎么开启&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;输入 &lt;code&gt;/memory&lt;/code&gt;，选择「Auto-memory」然后回车：&lt;/p&gt;&lt;p&gt;&lt;/p&gt;&lt;figure&gt;&lt;img src=&quot;https://img.mistfly.xyz/file/blog/2k8mMwl3.png&quot; alt=&quot;Auto-memory&quot; /&gt;&lt;figcaption&gt;Auto-memory&lt;/figcaption&gt;&lt;/figure&gt;&lt;p&gt;&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;注意事项&lt;a href=&quot;#注意事项&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;ul&gt;
+&lt;li&gt;记忆只对当前项目生效，不会跨项目串台&lt;/li&gt;
+&lt;li&gt;可以通过 &lt;code&gt;/memory&lt;/code&gt; 查看和管理已有记忆&lt;/li&gt;
+&lt;li&gt;记忆过时了可以手动删除或更新&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;能力扩展（进阶）&lt;a href=&quot;#能力扩展进阶&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;CC 本体功能已经够用了，但扩展生态才是它真正有意思的地方。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;Skill 技能扩展&lt;a href=&quot;#skill-技能扩展&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Skill 是 CC 的技能包，装上之后能解锁新能力。比如 CC 本来不会设计前端界面，装上 Frontend-Design 技能后就能做 UI 了。&lt;/p&gt;&lt;section&gt;&lt;h3&gt;推荐 Skill&lt;a href=&quot;#推荐-skill&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;把 GitHub 链接发给 CC，它会帮你装好：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;技能&lt;/th&gt;&lt;th&gt;作用&lt;/th&gt;&lt;th&gt;来源&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;Find-Skill&lt;/td&gt;&lt;td&gt;搜索和安装社区技能，相当于技能商店&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;https://github.com/vercel-labs/skills/tree/main/skills/find-skills&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Frontend-Design&lt;/td&gt;&lt;td&gt;前端界面设计专家&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;https://github.com/anthropics/skills/tree/main/skills/frontend-design&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;Skill-Creator&lt;/td&gt;&lt;td&gt;自己动手造技能&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;https://github.com/anthropics/skills/tree/main/skills/skill-creator&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/section&gt;&lt;section&gt;&lt;h3&gt;手动安装&lt;a href=&quot;#手动安装&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h3&gt;&lt;p&gt;也可以去这些网站自己找技能手动装：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;a href=&quot;https://www.skills.sh/&quot; target=&quot;_blank&quot;&gt;skills.sh&lt;/a&gt; — Skill 搜索和分享平台&lt;/li&gt;
+&lt;li&gt;&lt;a href=&quot;https://lobehub.com/zh/skills&quot; target=&quot;_blank&quot;&gt;LobeHub Skills&lt;/a&gt; — 按分类浏览，有精选合集&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;下载后放到对应目录就行：&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;全局级&lt;/strong&gt;：&lt;code&gt;~/.claude/skills/&lt;/code&gt;&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;项目级&lt;/strong&gt;：项目根目录的 &lt;code&gt;.claude/skills/&lt;/code&gt;&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;MCP 扩展&lt;a href=&quot;#mcp-扩展&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;MCP（Model Context Protocol）是 CC 连接外部工具的协议。装上 MCP 服务器后，CC 就能直接操作数据库、调 API、操作文件系统。&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;连接数据库，直接执行 SQL 查询&lt;/li&gt;
+&lt;li&gt;调用第三方 API（天气、翻译、新闻等）&lt;/li&gt;
+&lt;li&gt;操作文件系统（批量重命名、格式转换）&lt;/li&gt;
+&lt;li&gt;连接 Slack、飞书等通讯工具&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;子 Agent&lt;a href=&quot;#子-agent&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;子 Agent 是 CC 的分身，可以让多个 Agent 并行干活。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;为什么要用：&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;一个 Agent 改前端，另一个改后端，同时进行&lt;/li&gt;
+&lt;li&gt;每个 Agent 专注一件事，减少上下文污染&lt;/li&gt;
+&lt;li&gt;子 Agent 有独立上下文，不会互相干扰&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;怎么触发：&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;自动触发&lt;/strong&gt; — 任务复杂、有并行可能时，CC 自己派生&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;手动创建&lt;/strong&gt; — 用 &lt;code&gt;/agents&lt;/code&gt; 指令，进入 Library 界面搭建&lt;/li&gt;
+&lt;/ul&gt;&lt;p&gt;&lt;strong&gt;创建流程：&lt;/strong&gt;&lt;/p&gt;&lt;ol&gt;
+&lt;li&gt;选择创建范围（项目级/全局级）&lt;/li&gt;
+&lt;li&gt;选择「AI 辅助创建」&lt;/li&gt;
+&lt;li&gt;描述这个子 Agent 要干啥（越具体越好）&lt;/li&gt;
+&lt;li&gt;分配工具权限&lt;/li&gt;
+&lt;li&gt;选模型（Sonnet 就够用）&lt;/li&gt;
+&lt;li&gt;选个颜色跟主 Agent 区分&lt;/li&gt;
+&lt;/ol&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;Hook 钩子&lt;a href=&quot;#hook-钩子&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;Hook 是触发器，特定事件发生时自动跑脚本。比如改完代码后自动格式化，提交前自动检查安全问题。&lt;/p&gt;&lt;p&gt;&lt;strong&gt;实用 Hook 示例：&lt;/strong&gt;&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;场景&lt;/th&gt;&lt;th&gt;提示词&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;任务完成提醒&lt;/td&gt;&lt;td&gt;设置一个 hook，完成任务后自动发出”叮”的提示音&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;自动格式化&lt;/td&gt;&lt;td&gt;设置一个 hook，修改文件后自动运行 prettier 格式化代码&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;提交前检查&lt;/td&gt;&lt;td&gt;设置一个 hook，提交代码前自动检查格式和安全问题&lt;/td&gt;&lt;/tr&gt;&lt;tr&gt;&lt;td&gt;防泄露&lt;/td&gt;&lt;td&gt;设置一个 hook，提交前检查有没有密码、密钥等敏感信息&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;p&gt;&lt;strong&gt;触发时机：&lt;/strong&gt;&lt;/p&gt;&lt;ul&gt;
+&lt;li&gt;&lt;strong&gt;PreToolUse&lt;/strong&gt; — 工具执行前触发&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;PostToolUse&lt;/strong&gt; — 工具执行后触发&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Notification&lt;/strong&gt; — 通知时触发&lt;/li&gt;
+&lt;/ul&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;插件&lt;a href=&quot;#插件&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;插件是”全家桶”，一个插件可能打包了 Skill + SubAgent + Hook + MCP。&lt;/p&gt;&lt;p&gt;通过 &lt;code&gt;/plugin&lt;/code&gt; 进入插件商店安装。目前推荐：&lt;/p&gt;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+&lt;table&gt;&lt;thead&gt;&lt;tr&gt;&lt;th&gt;插件&lt;/th&gt;&lt;th&gt;作用&lt;/th&gt;&lt;th&gt;来源&lt;/th&gt;&lt;/tr&gt;&lt;/thead&gt;&lt;tbody&gt;&lt;tr&gt;&lt;td&gt;commit-commands&lt;/td&gt;&lt;td&gt;Git 操作一键搞定&lt;/td&gt;&lt;td&gt;&lt;a href=&quot;https://github.com/anthropics/claude-code/tree/main/plugins/commit-commands&quot; target=&quot;_blank&quot;&gt;GitHub&lt;/a&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/tbody&gt;&lt;/table&gt;&lt;/section&gt;&lt;/section&gt;
+&lt;section&gt;&lt;h1&gt;实用技巧&lt;a href=&quot;#实用技巧&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h1&gt;&lt;p&gt;最后说几个实用技巧。&lt;/p&gt;&lt;section&gt;&lt;h2&gt;别把所有事塞一个会话&lt;a href=&quot;#别把所有事塞一个会话&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;上下文有限，一个会话专注做一件事，做完就开新的。把”重构登录模块”和”写支付功能”塞一个会话里，上下文乱了 CC 容易出错。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;重要决策写进 Claude.md&lt;a href=&quot;#重要决策写进-claudemd&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;代码规范、技术选型、架构决策这些长期有效的信息，写进 &lt;code&gt;Claude.md&lt;/code&gt;，清空上下文也不会丢。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;善用 Shift + Tab&lt;a href=&quot;#善用-shift--tab&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;&lt;code&gt;Shift + Tab&lt;/code&gt; 切换模式是高频操作。问问题用默认，规划用计划模式，动手用 Accept Edits。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;用 /btw 隔离临时问题&lt;a href=&quot;#用-btw-隔离临时问题&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;正在改代码突然想问个无关的问题，用 &lt;code&gt;/btw&lt;/code&gt; 隔离上下文，完事 &lt;code&gt;Esc&lt;/code&gt; 回来就行。&lt;/p&gt;&lt;/section&gt;&lt;section&gt;&lt;h2&gt;不确定的操作选”仅同意一次”&lt;a href=&quot;#不确定的操作选仅同意一次&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;装依赖、跑测试这种无害的命令可以”同意并记住”，改配置、删文件这种有风险的操作还是每次确认一下。&lt;/p&gt;&lt;hr /&gt;&lt;p&gt;到这里 CC 的核心功能就讲完了。日常开发够用了，扩展那些等你用熟了再折腾也不迟。&lt;/p&gt;&lt;/section&gt;&lt;/section&gt;</content:encoded></item><item><title>Claude Code 最新安装教程</title><link>https://mistfly.xyz/posts/claude-code-setup/</link><guid isPermaLink="true">https://mistfly.xyz/posts/claude-code-setup/</guid><description>面向普通用户的 Claude Code 安装与模型接入指南</description><pubDate>Wed, 10 Jun 2026 00:00:00 GMT</pubDate><content:encoded>&lt;section&gt;&lt;h2&gt;什么是 AI Agent&lt;a href=&quot;#什么是-ai-agent&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;聊 Claude Code 之前，先搞清楚一个概念：&lt;strong&gt;AI Agent&lt;/strong&gt;，也叫「智能体」。&lt;/p&gt;&lt;p&gt;普通 AI 对话就是你问一句它答一句，像个问答机器。AI Agent 不一样——它能自己动手干活。&lt;/p&gt;&lt;p&gt;举个例子：你说「帮我把这个项目跑起来」，它会自己去看代码、装依赖、启动服务。不需要你一步步教它。&lt;/p&gt;&lt;/section&gt;
 &lt;section&gt;&lt;h2&gt;Claude Code 与网页版的区别&lt;a href=&quot;#claude-code-与网页版的区别&quot;&gt;&lt;span&gt;#&lt;/span&gt;&lt;/a&gt;&lt;/h2&gt;&lt;p&gt;很多人用过 Claude 的网页版，可能会问：网页版已经很好用了，为什么还要装 Claude Code？&lt;/p&gt;&lt;p&gt;最核心的区别是：网页版只能聊天，Claude Code 能直接在你的项目里干活。&lt;/p&gt;
 
 
