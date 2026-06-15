@@ -184,35 +184,3 @@ const path = customPath || (id ? `/posts/${id}` : "");
         )
     }
 </div>
-
-<script is:inline define:vars={{
-  envId: commentConfig.twikoo?.envId,
-  visitorCount: commentConfig.twikoo?.visitorCount,
-  pagePath: path,
-}}>
-  if (visitorCount && envId && document.getElementById('twikoo_visitors')) {
-    var twikooRetryCount = 0;
-    var twikooMaxRetry = 20;
-    function loadTwikooVisitorCount() {
-      if (typeof twikoo === 'undefined') {
-        twikooRetryCount++;
-        if (twikooRetryCount < twikooMaxRetry) {
-          setTimeout(loadTwikooVisitorCount, 500);
-        }
-        return;
-      }
-      twikoo.getCount({
-        envId: envId,
-        urls: [pagePath],
-      }).then(function(res) {
-        var el = document.getElementById('twikoo_visitors');
-        if (el && res && res.length > 0) {
-          el.textContent = res[0].count || 0;
-        }
-      }).catch(function(err) {
-        console.error('[Twikoo] 获取访问量失败:', err);
-      });
-    }
-    loadTwikooVisitorCount();
-  }
-</script>
