@@ -191,9 +191,14 @@ const path = customPath || (id ? `/posts/${id}` : "");
   pagePath: path,
 }}>
   if (visitorCount && envId && document.getElementById('twikoo_visitors')) {
+    var twikooRetryCount = 0;
+    var twikooMaxRetry = 20;
     function loadTwikooVisitorCount() {
       if (typeof twikoo === 'undefined') {
-        setTimeout(loadTwikooVisitorCount, 500);
+        twikooRetryCount++;
+        if (twikooRetryCount < twikooMaxRetry) {
+          setTimeout(loadTwikooVisitorCount, 500);
+        }
         return;
       }
       twikoo.getCount({
