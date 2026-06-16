@@ -6,7 +6,7 @@ tags:
   - 代理
   - GitHub
   - 实用技巧
-category: 实用技巧
+category: 技术
 description: 本文介绍了如何为 Git 配置 HTTP 代理和 SOCKS5 代理，以解决在中国大陆无法正常拉取和推送 GitHub 仓库的问题。
 comment: true
 ---

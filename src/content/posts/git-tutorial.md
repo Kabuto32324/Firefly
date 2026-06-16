@@ -7,7 +7,7 @@ tags:
   - 教程
   - 版本控制
   - 入门
-category: 实用技巧
+category: 技术
 draft: false
 lang: ''
 comment: true

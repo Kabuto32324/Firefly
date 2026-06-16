@@ -8,7 +8,7 @@ tags:
   - 教程
   - 入门
   - DeepSeek
-category: 实用技巧
+category: 技术
 draft: false
 lang: ''
 comment: true
