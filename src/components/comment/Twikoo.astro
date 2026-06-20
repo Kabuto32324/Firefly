@@ -39,6 +39,28 @@ const config = {
     };
   }
 
+  // 获取并更新浏览量
+  async function fetchVisitorCount() {
+    const visitorEl = document.getElementById("twikoo_visitors");
+    if (!visitorEl) return;
+    try {
+      const result = await twikoo.getVisitorCount({
+        envId: config.envId,
+        path: getCurrentPath(),
+      });
+      if (typeof result === "number") {
+        visitorEl.textContent = result;
+      } else if (result && typeof result.time === "number") {
+        visitorEl.textContent = result.time;
+      } else {
+        visitorEl.textContent = "0";
+      }
+    } catch (err) {
+      console.error("[Twikoo] 获取浏览量失败:", err);
+      visitorEl.textContent = "0";
+    }
+  }
+
   // 初始化 Twikoo
   function initTwikoo() {
     if (typeof twikoo !== "undefined") {
@@ -53,6 +75,8 @@ const config = {
           .init(dynamicConfig)
           .then(() => {
             console.log("[Twikoo] 初始化完成");
+            // Twikoo 内置的 updateVisitorsCount 可能未生效，手动获取浏览量
+            fetchVisitorCount();
           })
           .catch((error) => {
             console.error("[Twikoo] 初始化失败:", error);
