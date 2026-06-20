@@ -238,8 +238,8 @@ export type CommentConfig = {
 		visitorCount?: boolean;
 		/**
 		 * Twikoo JS 文件地址，支持 CDN 链接
-		 * 国内推荐: https://registry.npmmirror.com/twikoo/1.7.9/files/dist/twikoo.min.js
-		 * 国际推荐: https://cdn.jsdelivr.net/npm/twikoo@1.7.9/dist/twikoo.min.js
+		 * 国内推荐: https://registry.npmmirror.com/twikoo/1.7.12/files/dist/twikoo.min.js
+		 * 国际推荐: https://cdn.jsdelivr.net/npm/twikoo@1.7.12/dist/twikoo.min.js
 		 */
 		jsUrl?: string;
 		/**
