@@ -24,9 +24,9 @@ export const coverImageConfig: CoverImageConfig = {
 		enable: true,
 		// 封面图API列表
 		apis: [
-			"https://picsum.photos/1920/1080",
 			"https://t.alcy.cc/pc",
-			"https://picsum.photos/1200/630",
+			"https://www.dmoe.cc/random.php",
+			"https://uapis.cn/api/v1/random/image?category=acg&type=pc",
 		],
 		// API失败时的回退图片路径（相对于src目录或以/开头的public目录路径）
 		fallback: "assets/images/cover.avif",
