@@ -1,6 +1,7 @@
 ---
 title: Claude Code 使用指南
 description: 从零搞懂 CC 的核心功能，工作模式、指令、上下文管理、配置、扩展，一篇讲透。
+image: "api"
 tags:
   - 教程
   - Claude Code

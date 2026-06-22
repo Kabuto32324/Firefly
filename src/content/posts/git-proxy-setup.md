@@ -1,6 +1,7 @@
 ---
 title: Git 代理配置指南：解决 GitHub 访问问题
 published: 2026-06-07
+image: "api"
 tags:
   - Git
   - 代理

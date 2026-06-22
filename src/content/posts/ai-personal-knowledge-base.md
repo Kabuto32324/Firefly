@@ -1,6 +1,7 @@
 ---
 title: 用 Claude + Obsidian 搭建个人知识库：从零到可用
 description: 我是怎么用 Karpathy 的 LLM Wiki 方法论，配合 Obsidian、Claude 和 Web Clipper，搭出一个能自我维护的个人知识库的。
+image: "api"
 published: 2026-06-20
 tags:
   - AI

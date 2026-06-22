@@ -1,6 +1,7 @@
 ---
 title: AI 工作流：让 AI 从"瞎忙"变成"专业干"
 description: 用大白话讲清楚 AI 工作流是什么、为什么需要它、和 Agent 有什么区别、有哪些常用模式，最后带你从零理解一个简单的工作流。
+image: "api"
 published: 2026-06-16
 tags:
   - AI

@@ -2,6 +2,7 @@
 title: Claude Code 最新安装教程
 published: 2026-06-10
 description: 面向普通用户的 Claude Code 安装与模型接入指南
+image: "api"
 tags:
   - Claude Code
   - AI编程

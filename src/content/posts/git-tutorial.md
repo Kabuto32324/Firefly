@@ -2,6 +2,7 @@
 title: Git 使用教程：从零开始的完整指南
 published: 2026-06-08
 description: 一篇面向完全新手的 Git 使用教程，涵盖安装配置、基本操作、分支管理、远程仓库和 GitHub 协作工作流，帮助你快速上手版本控制。
+image: "api"
 tags:
   - Git
   - 教程
