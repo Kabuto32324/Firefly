@@ -2,7 +2,7 @@
 title: Prompt 工程：从能用到好用
 description: 你写的 Prompt 为什么效果总是差一点？这篇文章从原理讲起，用 8 个实战技巧帮你把 Prompt 从"凑合能用"提升到"效果拉满"。
 image: "api"
-published: 2026-06-20
+published: 2026-06-23
 tags:
   - Prompt
   - AI
