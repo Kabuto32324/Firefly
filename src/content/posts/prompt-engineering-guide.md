@@ -322,12 +322,4 @@ interface ButtonProps {
 
 ---
 
-## 延伸资源
-
-- 《The Art of Prompt Engineering》— 系统学习 Prompt 设计
-- [Anthropic 官方 Prompt 指南](https://docs.anthropic.com/zh-CN/docs/build-with-claude/prompt-engineering) — Claude 专属技巧
-- [OpenAI Prompt Engineering](https://platform.openai.com/docs/guides/prompt-engineering) — GPT 专属技巧
-
----
-
 有什么 Prompt 技巧是你常用的？评论区分享一下。
