@@ -13,7 +13,7 @@ export const siteConfig: SiteConfig = {
 	subtitle: "拾光の博客✨",
 
 	// 站点 URL
-	site_url: "https://mistfly.xyz/",
+	site_url: "https://blog.mistfly.xyz/",
 
 	// 站点描述
 	description:
