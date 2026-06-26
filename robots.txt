@@ -1,4 +1,4 @@
 User-agent: *
 Disallow: /_astro/
 
-Sitemap: https://mistfly.xyz/sitemap-index.xml
+Sitemap: https://blog.mistfly.xyz/sitemap-index.xml
