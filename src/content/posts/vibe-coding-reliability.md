@@ -8,7 +8,7 @@ tags:
   - Vibe Coding
   - 编程
   - 随笔
-category: 生活
+category: 随笔
 ---
 
 ## 第一次听说这个词

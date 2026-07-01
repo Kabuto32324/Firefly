@@ -7,7 +7,7 @@ tags:
   - 程序员
   - AI
   - 随笔
-category: 生活
+category: 随笔
 ---
 
 你有多久没手写过代码了？
